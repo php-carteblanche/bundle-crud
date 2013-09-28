@@ -17,6 +17,9 @@
         "atelierspierrot/library": "dev-master",
         "carte-blanche/core": "dev-master"
     },
+    "require-dev": {
+        "carte-blanche/core": "dev-wip"
+    },
     "autoload": { 
         "psr-0": { "AutoObject": "src" },
         "classmap": [ "src/AutoObject/Controller" ]
