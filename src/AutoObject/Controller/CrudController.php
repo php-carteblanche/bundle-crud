@@ -11,13 +11,13 @@ namespace AutoObject\Controller;
 
 use \CarteBlanche\CarteBlanche;
 use \AutoObject\Controller\AutoObjectControllerAbstract;
-use \CarteBlanche\App\Abstracts\AbstractController;
+use \CarteBlanche\Abstracts\AbstractController;
 use \CarteBlanche\Exception\NotFoundException;
 
 /**
  * The default CRUD controller
  *
- * Default CRUD controller extending the abstract \CarteBlanche\App\Abstracts\AbstractController class
+ * Default CRUD controller extending the abstract \CarteBlanche\Abstracts\AbstractController class
  *
  * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
  */
@@ -55,7 +55,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if ($_object) {
 			$model = $_object->getModel();
@@ -115,7 +115,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if ($_object) {
 			$model = $_object->getModel();
@@ -186,7 +186,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if ($_object) {
 			$model = $_object->getModel();
@@ -245,7 +245,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if ($_object) {
 			$model = $_object->getModel();
@@ -284,7 +284,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 		$_toggler_val = 'off' == $toggler ? 0 : 1;
 
 		if ($_object) {

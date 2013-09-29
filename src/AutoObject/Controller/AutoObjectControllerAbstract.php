@@ -10,13 +10,13 @@
 namespace AutoObject\Controller;
 
 use \CarteBlanche\CarteBlanche;
-use \CarteBlanche\App\Abstracts\AbstractController;
+use \CarteBlanche\Abstracts\AbstractController;
 use \CarteBlanche\Exception\NotFoundException;
 
 /**
  * The default application controller
  *
- * Default data controller extending abstract \CarteBlanche\App\Abstracts\AbstractController class
+ * Default data controller extending abstract \CarteBlanche\Abstracts\AbstractController class
  *
  * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
  */

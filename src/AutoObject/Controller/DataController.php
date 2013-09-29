@@ -16,7 +16,7 @@ use \CarteBlanche\Exception\NotFoundException;
 /**
  * The default application controller
  *
- * Default data controller extending abstract \CarteBlanche\App\Abstracts\AbstractController class
+ * Default data controller extending abstract \CarteBlanche\Abstracts\AbstractController class
  *
  * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
  */
@@ -36,7 +36,7 @@ class DataController extends AutoObjectControllerAbstract
 	{
 		$this->getContainer()->get('router')->setReferer();
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$tables = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
 		$ctt='';
 
 		$search_str = $this->getContainer()->get('request')->getArgument('search', '', true, ENT_NOQUOTES);
@@ -78,7 +78,7 @@ class DataController extends AutoObjectControllerAbstract
 				'field'			=> $search_fields_by_tables,
 				'table'			=> $search_tables
 			));
-            $ems = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getEntityManager($_altdb);
+            $ems = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getEntityManager($_altdb);
             $em = end($ems);
             $db = CarteBlanche::getContainer()->get('entity_manager')
                 ->getStorageEngine($em->getDatabaseName());
@@ -192,7 +192,7 @@ class DataController extends AutoObjectControllerAbstract
 		$this->getContainer()->get('router')->setReferer();
 		if (empty($table)) return self::indexAction( $offset, $limit );
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$tables = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
 		if (!isset($tables[$table]))
 			throw new NotFoundException(
 				sprintf('Unknown table "%s" in entity manager "%s"!', $table, $_altdb)
@@ -284,7 +284,7 @@ class DataController extends AutoObjectControllerAbstract
 	{
 		if (empty($table)) return self::indexAction();
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$tables = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
 		if (!isset($tables[$table]))
 			throw new NotFoundException(
 				sprintf('Unknown table "%s" in entity manager "%s"!', $table, $_altdb)
@@ -403,7 +403,7 @@ class DataController extends AutoObjectControllerAbstract
 		if (empty($table)) return self::indexAction();
 		$request = $this->getContainer()->get('request');
 		$_altdb = $request->getUrlArg('altdb');
-		$tables = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
 		if (!isset($tables[$table]))
 			throw new NotFoundException(
 				sprintf('Unknown table "%s" in entity manager "%s"!', $table, $_altdb)
@@ -450,7 +450,7 @@ class DataController extends AutoObjectControllerAbstract
 						foreach ($blobs as $_fieldname) {
 							if (!empty($_data[$_fieldname])) {
 								$clientname = $zip_path.$_fieldname.'_'.$table.$_id;
-								$_doc = \CarteBlanche\Lib\File::createFromContent(
+								$_doc = \CarteBlanche\Library\File::createFromContent(
 									$_data[$_fieldname], $clientname
 								);
 								$_data[$_fieldname] = $_doc->getBasename();
@@ -525,7 +525,7 @@ class DataController extends AutoObjectControllerAbstract
 		if (empty($id)) return self::indexAction();
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_structure = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_structure = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if (isset($_structure)) {
 			$model = $_structure->getModel();
@@ -541,7 +541,7 @@ class DataController extends AutoObjectControllerAbstract
 					}
 				}
 				if (!empty($filectt)) {
-					$_file = \CarteBlanche\Lib\File::createFromContent( $filectt );
+					$_file = \CarteBlanche\Library\File::createFromContent( $filectt );
 					if ($_file) {
 						if ($_file->isImage()) {
 							$this->getContainer()->get('response')->flush( $filectt );
@@ -580,7 +580,7 @@ class DataController extends AutoObjectControllerAbstract
 	{
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
 		$SQLITE = $this->getContainer()->get('database');
-		$tables = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
 
 		$ctt='';
 		if (!empty($tables)) {
@@ -626,7 +626,7 @@ class DataController extends AutoObjectControllerAbstract
 		if (empty($table) && empty($datafile)) 
 			$this->getContainer()->get('router')->redirect( $this->getContainer()->get('router')->buildUrl('altdb',$_altdb) );
 		$SQLITE = $this->getContainer()->get('database');
-		$tables = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
 
 		if (!empty($tables)) {
 			foreach ($tables as $_table) {
