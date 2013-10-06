@@ -151,8 +151,8 @@ class DataController extends AutoObjectControllerAbstract
 			}
 		}
 		
-		$this->render(array(
-			'output'=> $ctt
+		return array('raw_content.htm', array(
+			'content'=> $ctt
 		));
 	}
 
@@ -168,9 +168,10 @@ class DataController extends AutoObjectControllerAbstract
 			'original_str'=>file_get_contents(__DIR__.'/../views/search_help.md'),
 			'markdown'=>true,
 		));
-		$this->render(array(
+
+		return array('raw_content.htm', array(
 			'title'=>'Advanced search help',
-			'output'=> $this->view( self::$views_dir.'search_help.htm', array( 
+			'content'=> $this->view( self::$views_dir.'search_help.htm', array( 
 				'content'=>$_txt,
 				'return'=>$return 
 			) )
@@ -267,8 +268,8 @@ class DataController extends AutoObjectControllerAbstract
 			);
 		}
 		
-		$this->render(array(
-			'output'=> $ctt,
+		return array('raw_content.htm', array(
+			'content'=> $ctt,
 			'title'=>'Table '.$table
 		));
 	}
@@ -579,7 +580,7 @@ class DataController extends AutoObjectControllerAbstract
 	public function tables_structureAction()
 	{
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$SQLITE = $this->getContainer()->get('database');
+		$SQLITE = $this->getContainer()->get('entity_manager')->getStorageEngine();
 		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
 
 		$ctt='';
@@ -600,8 +601,8 @@ class DataController extends AutoObjectControllerAbstract
 			}
 		}
 
-		$this->render(array(
-			'output'=> $ctt,
+		return array('raw_content.htm', array(
+			'content'=> $ctt,
 			'title' => "Tables structure of database"
 		));
 	}

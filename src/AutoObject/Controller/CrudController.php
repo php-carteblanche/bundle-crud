@@ -87,19 +87,13 @@ class CrudController extends AutoObjectControllerAbstract
 					    ->commit();
 				}
 			}
-			$this->render(array(
+            return array(self::$views_dir.'update_entry.htm', array(
+                'altdb'=>$_altdb,
+                'form'=>$form,
+                'table_name'=>$_mod,
+                'object'=>$object,
 				'title'=>'Creation of a new '.$_mod,
-				'output'=> $this->view(
-						self::$views_dir.'update_entry.htm',
-						array(
-							'altdb'=>$_altdb,
-							'form'=>$form,
-							'table_name'=>$_mod,
-							'object'=>$object,
-						)
-					)
-			));
-			exit;
+            ));
 		} else {
 			throw new NotFoundException("No model name requested or structure not found [$_mod]!");
 		}
@@ -153,21 +147,15 @@ class CrudController extends AutoObjectControllerAbstract
 					}
 				}
 
-				$this->render(array(
+                return array(self::$views_dir.'read_entry.htm', array(
+                    'altdb'=>$_altdb,
+                    'table_name'=>$_mod,
+                    'object'=>$object,
+                    'fields'=>$model->getFieldsList(),
+                    'table_structure'=>$model->getTableStructure(),
+                    'relations'=>$model->getObjectRelations(),
 					'title'=>$title,
-					'output'=> $this->view(
-						self::$views_dir.'read_entry.htm',
-						array(
-							'altdb'=>$_altdb,
-							'table_name'=>$_mod,
-							'object'=>$object,
-							'fields'=>$model->getFieldsList(),
-							'table_structure'=>$model->getTableStructure(),
-							'relations'=>$model->getObjectRelations(),
-						)
-					)
-				));
-				exit;
+                ));
 			} else {
 				throw new NotFoundException("No object found [$_mod:$id]!");
 			}
@@ -214,19 +202,13 @@ class CrudController extends AutoObjectControllerAbstract
                         ));
                     }
 				}
-				$this->render(array(
+                return array(self::$views_dir.'update_entry.htm', array(
+                    'altdb'=>$_altdb,
+                    'form'=>$form,
+                    'table_name'=>$_mod,
+                    'object'=>$object,
 					'title'=>(!empty($slug) && isset($object[$slug])) ? $object[$slug] : 'Edition of '.$_mod.' '.$id,
-					'output'=> $this->view(
-							self::$views_dir.'update_entry.htm',
-							array(
-								'altdb'=>$_altdb,
-								'form'=>$form,
-								'table_name'=>$_mod,
-								'object'=>$object,
-							)
-						)
-				));
-				exit;
+                ));
 			} else {
 				throw new NotFoundException("No object found [$_mod:$id]!");
 			}
