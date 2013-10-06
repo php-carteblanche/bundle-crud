@@ -7,11 +7,11 @@
  * Sources <http://github.com/php-carteblanche/carteblanche>
  */
 
-namespace AutoObject\Controller;
+namespace Crud\Controller;
 
-use \CarteBlanche\CarteBlanche;
-use \CarteBlanche\Abstracts\AbstractController;
-use \CarteBlanche\Exception\NotFoundException;
+use \CarteBlanche\CarteBlanche,
+    \CarteBlanche\Abstracts\AbstractController,
+    \CarteBlanche\Exception\NotFoundException;
 
 /**
  * The default application controller
@@ -20,13 +20,13 @@ use \CarteBlanche\Exception\NotFoundException;
  *
  * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
  */
-abstract class AutoObjectControllerAbstract extends AbstractController
+abstract class CrudControllerAbstract extends AbstractController
 {
 
 	/**
 	 * The directory where to search the views files
 	 */
-	static $views_dir = 'AutoObject/views/';
+	static $views_dir = 'Crud/views/';
 
 	protected function init()
 	{

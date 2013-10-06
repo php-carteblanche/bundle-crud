@@ -1,10 +1,9 @@
 {
     "name": "carte-blanche/bundle-crud",
     "type": "carte-blanche-bundle",
-    "description": "The bundle to build the automatic objects from an object map.",
+    "description": "The bundle to build the automatic objects from an object map",
     "keywords": [ "carte blanche", "bundles" ],
     "homepage": "http://github.com/php-carteblanche/bundle-crud",
-    "version": "0.0.2-dev",
     "license": "Apache-2.0",
     "authors": [{
         "name": "Les Ateliers Pierrot & contributors",
@@ -12,23 +11,25 @@
         "homepage": "http://www.ateliers-pierrot.fr/"
     }],
     "require": {
-        "php": ">=5.3.0",
         "atelierspierrot/patterns": "dev-master",
         "atelierspierrot/library": "dev-master",
-        "carte-blanche/core": "dev-master"
+        "carte-blanche/core": "~0.1"
     },
     "require-dev": {
-        "carte-blanche/core": "dev-wip"
+        "carte-blanche/core": "~0.1@dev"
     },
     "autoload": { 
         "psr-0": { "AutoObject": "src" },
-        "classmap": [ "src/AutoObject/Controller" ]
+        "classmap": [ "src/Crud/Controller" ]
     },
     "repositories": [{
         "type": "composer", "url": "http://packagist.ateliers-pierrot.fr/"
     }],
     "extra": {
-        "views": "src/AutoObject/views",
-        "carte-blanche-configs": [ "config/autoobject_config.ini", "config/int_tables.php" ]
+        "views": "src/Crud/views",
+        "carte-blanche-configs": [ "config/crud_config.ini", "config/int_tables.php" ],
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
     }
 }

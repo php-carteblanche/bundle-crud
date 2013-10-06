@@ -7,11 +7,13 @@
  * Sources <http://github.com/php-carteblanche/carteblanche>
  */
 
-namespace AutoObject\Controller;
+namespace Crud\Controller;
 
-use \CarteBlanche\CarteBlanche;
+use \CarteBlanche\CarteBlanche,
+    \CarteBlanche\Exception\NotFoundException,
+    \CarteBlanche\Library\AutoObject\AutoObjectMapper;
+
 use \AutoObject\Controller\AutoObjectControllerAbstract;
-use \CarteBlanche\Exception\NotFoundException;
 
 /**
  * The default application controller
@@ -36,7 +38,7 @@ class DataController extends AutoObjectControllerAbstract
 	{
 		$this->getContainer()->get('router')->setReferer();
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = AutoObjectMapper::getObjectsStructure( $_altdb );
 		$ctt='';
 
 		$search_str = $this->getContainer()->get('request')->getArgument('search', '', true, ENT_NOQUOTES);
@@ -78,7 +80,7 @@ class DataController extends AutoObjectControllerAbstract
 				'field'			=> $search_fields_by_tables,
 				'table'			=> $search_tables
 			));
-            $ems = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getEntityManager($_altdb);
+            $ems = AutoObjectMapper::getEntityManager($_altdb);
             $em = end($ems);
             $db = CarteBlanche::getContainer()->get('entity_manager')
                 ->getStorageEngine($em->getDatabaseName());
@@ -193,7 +195,7 @@ class DataController extends AutoObjectControllerAbstract
 		$this->getContainer()->get('router')->setReferer();
 		if (empty($table)) return self::indexAction( $offset, $limit );
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = AutoObjectMapper::getObjectsStructure( $_altdb );
 		if (!isset($tables[$table]))
 			throw new NotFoundException(
 				sprintf('Unknown table "%s" in entity manager "%s"!', $table, $_altdb)
@@ -285,7 +287,7 @@ class DataController extends AutoObjectControllerAbstract
 	{
 		if (empty($table)) return self::indexAction();
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = AutoObjectMapper::getObjectsStructure( $_altdb );
 		if (!isset($tables[$table]))
 			throw new NotFoundException(
 				sprintf('Unknown table "%s" in entity manager "%s"!', $table, $_altdb)
@@ -404,7 +406,7 @@ class DataController extends AutoObjectControllerAbstract
 		if (empty($table)) return self::indexAction();
 		$request = $this->getContainer()->get('request');
 		$_altdb = $request->getUrlArg('altdb');
-		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = AutoObjectMapper::getObjectsStructure( $_altdb );
 		if (!isset($tables[$table]))
 			throw new NotFoundException(
 				sprintf('Unknown table "%s" in entity manager "%s"!', $table, $_altdb)
@@ -526,7 +528,7 @@ class DataController extends AutoObjectControllerAbstract
 		if (empty($id)) return self::indexAction();
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_structure = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_structure = AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if (isset($_structure)) {
 			$model = $_structure->getModel();
@@ -581,7 +583,7 @@ class DataController extends AutoObjectControllerAbstract
 	{
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
 		$SQLITE = $this->getContainer()->get('entity_manager')->getStorageEngine();
-		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = AutoObjectMapper::getObjectsStructure( $_altdb );
 
 		$ctt='';
 		if (!empty($tables)) {
@@ -627,7 +629,7 @@ class DataController extends AutoObjectControllerAbstract
 		if (empty($table) && empty($datafile)) 
 			$this->getContainer()->get('router')->redirect( $this->getContainer()->get('router')->buildUrl('altdb',$_altdb) );
 		$SQLITE = $this->getContainer()->get('database');
-		$tables = \CarteBlanche\Library\AutoObject\AutoObjectMapper::getObjectsStructure( $_altdb );
+		$tables = AutoObjectMapper::getObjectsStructure( $_altdb );
 
 		if (!empty($tables)) {
 			foreach ($tables as $_table) {
