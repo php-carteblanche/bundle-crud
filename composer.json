@@ -19,7 +19,7 @@
         "carte-blanche/core": "~0.1@dev"
     },
     "autoload": { 
-        "psr-0": { "AutoObject": "src" },
+        "psr-0": { "Crud": "src" },
         "classmap": [ "src/Crud/Controller" ]
     },
     "repositories": [{
