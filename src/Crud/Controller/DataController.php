@@ -13,7 +13,7 @@ use \CarteBlanche\CarteBlanche,
     \CarteBlanche\Exception\NotFoundException,
     \CarteBlanche\Library\AutoObject\AutoObjectMapper;
 
-use \AutoObject\Controller\AutoObjectControllerAbstract;
+use \Crud\Controller\CrudControllerAbstract;
 
 /**
  * The default application controller
@@ -22,7 +22,8 @@ use \AutoObject\Controller\AutoObjectControllerAbstract;
  *
  * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
  */
-class DataController extends AutoObjectControllerAbstract
+class DataController
+    extends CrudControllerAbstract
 {
 
 	/**

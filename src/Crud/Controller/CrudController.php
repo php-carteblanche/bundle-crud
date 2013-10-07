@@ -14,7 +14,7 @@ use \CarteBlanche\CarteBlanche,
     \CarteBlanche\Exception\NotFoundException,
     \CarteBlanche\Library\AutoObject\AutoObjectMapper;
 
-use \Crud\Controller\AutoObjectControllerAbstract;
+use \Crud\Controller\CrudControllerAbstract;
 
 /**
  * The default CRUD controller
@@ -23,7 +23,8 @@ use \Crud\Controller\AutoObjectControllerAbstract;
  *
  * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
  */
-class CrudController extends AutoObjectControllerAbstract
+class CrudController
+    extends CrudControllerAbstract
 {
 
 	/**
