@@ -3,25 +3,28 @@
  * CarteBlanche - PHP framework package - AutoObject bundle
  * Copyleft (c) 2013 Pierre Cassat and contributors
  * <www.ateliers-pierrot.fr> - <contact@ateliers-pierrot.fr>
- * License GPL-3.0 <http://www.opensource.org/licenses/gpl-3.0.html>
- * Sources <https://github.com/atelierspierrot/carte-blanche>
+ * License Apache-2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>
+ * Sources <http://github.com/php-carteblanche/carteblanche>
  */
 
-namespace AutoObject\Controller;
+namespace Crud\Controller;
 
-use \CarteBlanche\CarteBlanche;
-use \AutoObject\Controller\AutoObjectControllerAbstract;
-use \CarteBlanche\App\Abstracts\AbstractController;
-use \CarteBlanche\Exception\NotFoundException;
+use \CarteBlanche\CarteBlanche,
+    \CarteBlanche\Abstracts\AbstractController,
+    \CarteBlanche\Exception\NotFoundException,
+    \CarteBlanche\Library\AutoObject\AutoObjectMapper;
+
+use \Crud\Controller\CrudControllerAbstract;
 
 /**
  * The default CRUD controller
  *
- * Default CRUD controller extending the abstract \CarteBlanche\App\Abstracts\AbstractController class
+ * Default CRUD controller extending the abstract \CarteBlanche\Abstracts\AbstractController class
  *
  * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
  */
-class CrudController extends AutoObjectControllerAbstract
+class CrudController
+    extends CrudControllerAbstract
 {
 
 	/**
@@ -55,7 +58,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if ($_object) {
 			$model = $_object->getModel();
@@ -87,19 +90,13 @@ class CrudController extends AutoObjectControllerAbstract
 					    ->commit();
 				}
 			}
-			$this->render(array(
+            return array(self::$views_dir.'update_entry.htm', array(
+                'altdb'=>$_altdb,
+                'form'=>$form,
+                'table_name'=>$_mod,
+                'object'=>$object,
 				'title'=>'Creation of a new '.$_mod,
-				'output'=> $this->view(
-						self::$views_dir.'update_entry.htm',
-						array(
-							'altdb'=>$_altdb,
-							'form'=>$form,
-							'table_name'=>$_mod,
-							'object'=>$object,
-						)
-					)
-			));
-			exit;
+            ));
 		} else {
 			throw new NotFoundException("No model name requested or structure not found [$_mod]!");
 		}
@@ -115,7 +112,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if ($_object) {
 			$model = $_object->getModel();
@@ -153,21 +150,15 @@ class CrudController extends AutoObjectControllerAbstract
 					}
 				}
 
-				$this->render(array(
+                return array(self::$views_dir.'read_entry.htm', array(
+                    'altdb'=>$_altdb,
+                    'table_name'=>$_mod,
+                    'object'=>$object,
+                    'fields'=>$model->getFieldsList(),
+                    'table_structure'=>$model->getTableStructure(),
+                    'relations'=>$model->getObjectRelations(),
 					'title'=>$title,
-					'output'=> $this->view(
-						self::$views_dir.'read_entry.htm',
-						array(
-							'altdb'=>$_altdb,
-							'table_name'=>$_mod,
-							'object'=>$object,
-							'fields'=>$model->getFieldsList(),
-							'table_structure'=>$model->getTableStructure(),
-							'relations'=>$model->getObjectRelations(),
-						)
-					)
-				));
-				exit;
+                ));
 			} else {
 				throw new NotFoundException("No object found [$_mod:$id]!");
 			}
@@ -186,7 +177,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if ($_object) {
 			$model = $_object->getModel();
@@ -214,19 +205,13 @@ class CrudController extends AutoObjectControllerAbstract
                         ));
                     }
 				}
-				$this->render(array(
+                return array(self::$views_dir.'update_entry.htm', array(
+                    'altdb'=>$_altdb,
+                    'form'=>$form,
+                    'table_name'=>$_mod,
+                    'object'=>$object,
 					'title'=>(!empty($slug) && isset($object[$slug])) ? $object[$slug] : 'Edition of '.$_mod.' '.$id,
-					'output'=> $this->view(
-							self::$views_dir.'update_entry.htm',
-							array(
-								'altdb'=>$_altdb,
-								'form'=>$form,
-								'table_name'=>$_mod,
-								'object'=>$object,
-							)
-						)
-				));
-				exit;
+                ));
 			} else {
 				throw new NotFoundException("No object found [$_mod:$id]!");
 			}
@@ -245,7 +230,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 
 		if ($_object) {
 			$model = $_object->getModel();
@@ -284,7 +269,7 @@ class CrudController extends AutoObjectControllerAbstract
 	{
 		$_mod = $this->getContainer()->get('request')->getUrlArg('model');
 		$_altdb = $this->getContainer()->get('request')->getUrlArg('altdb');
-		$_object = \CarteBlanche\Lib\AutoObject\AutoObjectMapper::getAutoObject( $_mod, $_altdb );
+		$_object = AutoObjectMapper::getAutoObject( $_mod, $_altdb );
 		$_toggler_val = 'off' == $toggler ? 0 : 1;
 
 		if ($_object) {

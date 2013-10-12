@@ -3,30 +3,30 @@
  * CarteBlanche - PHP framework package - AutoObject bundle
  * Copyleft (c) 2013 Pierre Cassat and contributors
  * <www.ateliers-pierrot.fr> - <contact@ateliers-pierrot.fr>
- * License GPL-3.0 <http://www.opensource.org/licenses/gpl-3.0.html>
- * Sources <https://github.com/atelierspierrot/carte-blanche>
+ * License Apache-2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>
+ * Sources <http://github.com/php-carteblanche/carteblanche>
  */
 
-namespace AutoObject\Controller;
+namespace Crud\Controller;
 
-use \CarteBlanche\CarteBlanche;
-use \CarteBlanche\App\Abstracts\AbstractController;
-use \CarteBlanche\Exception\NotFoundException;
+use \CarteBlanche\CarteBlanche,
+    \CarteBlanche\Abstracts\AbstractController,
+    \CarteBlanche\Exception\NotFoundException;
 
 /**
  * The default application controller
  *
- * Default data controller extending abstract \CarteBlanche\App\Abstracts\AbstractController class
+ * Default data controller extending abstract \CarteBlanche\Abstracts\AbstractController class
  *
  * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
  */
-abstract class AutoObjectControllerAbstract extends AbstractController
+abstract class CrudControllerAbstract extends AbstractController
 {
 
 	/**
 	 * The directory where to search the views files
 	 */
-	static $views_dir = 'AutoObject/views/';
+	static $views_dir = 'Crud/views/';
 
 	protected function init()
 	{
