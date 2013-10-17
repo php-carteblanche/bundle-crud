@@ -110,7 +110,7 @@ class DataController
 				);
 	
 				$ctt .= $this->view(
-					self::$views_dir.'table_overview.htm',
+					self::$views_dir.'table_overview',
 					array(
 						'altdb'=>$_altdb,
 						'table_name'=>$_table_name,
@@ -133,7 +133,7 @@ class DataController
 			} else {
 				$total = $_model->count();
 				$ctt .= $this->view(
-					self::$views_dir.'table_overview.htm',
+					self::$views_dir.'table_overview',
 					array(
 						'altdb'=>$_altdb,
 						'table_name'=>$_table_name,
@@ -154,7 +154,7 @@ class DataController
 			}
 		}
 		
-		return array('raw_content.htm', array(
+		return array('raw_content', array(
 			'content'=> $ctt
 		));
 	}
@@ -172,9 +172,9 @@ class DataController
 			'markdown'=>true,
 		));
 
-		return array('raw_content.htm', array(
+		return array('raw_content', array(
 			'title'=>'Advanced search help',
-			'content'=> $this->view( self::$views_dir.'search_help.htm', array( 
+			'content'=> $this->view( self::$views_dir.'search_help', array( 
 				'content'=>$_txt,
 				'return'=>$return 
 			) )
@@ -247,7 +247,7 @@ class DataController
 			);
 
 			$ctt .= $this->view(
-				self::$views_dir.'full_table_overview.htm',
+				self::$views_dir.'full_table_overview',
 				array(
 					'echo_title'=>false,
 					'add_linecheck'=>true,
@@ -271,7 +271,7 @@ class DataController
 			);
 		}
 		
-		return array('raw_content.htm', array(
+		return array('raw_content', array(
 			'content'=> $ctt,
 			'title'=>'Table '.$table
 		));
@@ -557,7 +557,7 @@ class DataController
 							exit;
 /*
     					$this->view(
-  			  			'blob.htm', array(
+  			  			'blob', array(
 	  	  					'file_content'=>$filectt,
 	    					), true, true);
   						exit;
@@ -591,7 +591,7 @@ class DataController
 			foreach ($tables as $table) {
 				$results = $SQLITE->table_infos($table->getTableName());
 				$ctt .= $this->view(
-					self::$views_dir.'table_structure.htm', array(
+					self::$views_dir.'table_structure', array(
 						'altdb'=>$_altdb,
 						'table_name' => $table->getTableName(),
 						'table_structure'=>$results,
@@ -604,7 +604,7 @@ class DataController
 			}
 		}
 
-		return array('raw_content.htm', array(
+		return array('raw_content', array(
 			'content'=> $ctt,
 			'title' => "Tables structure of database"
 		));
