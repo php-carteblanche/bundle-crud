@@ -90,7 +90,7 @@ class CrudController
 					    ->commit();
 				}
 			}
-            return array(self::$views_dir.'update_entry.htm', array(
+            return array(self::$views_dir.'update_entry', array(
                 'altdb'=>$_altdb,
                 'form'=>$form,
                 'table_name'=>$_mod,
@@ -150,7 +150,7 @@ class CrudController
 					}
 				}
 
-                return array(self::$views_dir.'read_entry.htm', array(
+                return array(self::$views_dir.'read_entry', array(
                     'altdb'=>$_altdb,
                     'table_name'=>$_mod,
                     'object'=>$object,
@@ -205,7 +205,7 @@ class CrudController
                         ));
                     }
 				}
-                return array(self::$views_dir.'update_entry.htm', array(
+                return array(self::$views_dir.'update_entry', array(
                     'altdb'=>$_altdb,
                     'form'=>$form,
                     'table_name'=>$_mod,
