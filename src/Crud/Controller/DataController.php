@@ -1,10 +1,13 @@
 <?php
 /**
- * CarteBlanche - PHP framework package - AutoObject bundle
- * Copyleft (c) 2013 Pierre Cassat and contributors
- * <www.ateliers-pierrot.fr> - <contact@ateliers-pierrot.fr>
- * License Apache-2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>
- * Sources <http://github.com/php-carteblanche/carteblanche>
+ * This file is part of the CarteBlanche PHP framework
+ * (c) Pierre Cassat and contributors
+ * 
+ * Sources <http://github.com/php-carteblanche/bundle-crud>
+ *
+ * License Apache-2.0
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Crud\Controller;
@@ -15,12 +18,14 @@ use \CarteBlanche\CarteBlanche,
 
 use \Crud\Controller\CrudControllerAbstract;
 
+use \Library\Helper\Directory as DirectoryHelper;
+
 /**
  * The default application controller
  *
  * Default data controller extending abstract \CarteBlanche\Abstracts\AbstractController class
  *
- * @author 		Piero Wbmstr <piero.wbmstr@gmail.com>
+ * @author 		Piero Wbmstr <piwi@ateliers-pierrot.fr>
  */
 class DataController
     extends CrudControllerAbstract
@@ -435,7 +440,7 @@ class DataController
 			$csvfile_name = $table.'_export';
 			$zip_name = $table.'_export';
 			$zip_content = array();
-			$zip_path = CarteBlanche::getPath('tmp_path').$zip_name.'/';
+			$zip_path = CarteBlanche::getFullPath('web_tmp_dir').$zip_name.'/';
 
 			if (!empty($entries)) {
 				if (!@file_exists($zip_path) && !mkdir($zip_path)) {
@@ -497,7 +502,11 @@ class DataController
 
 				if (true===$zip->export()) {
 					$file = $zip->getExportedFileName();
-					$this->getContainer()->get('response')->download( $file, 'application/zip' );
+					$this->getContainer()->get('response')->download(
+					    DirectoryHelper::slashDirname($zip_path).$file,
+					    'application/zip',
+					    $file
+					);
 				} else {
 					$this->getContainer()->get('session')->setFlash("error:ERROR - An error occured while trying to build a ZIP archive!");
 				}
