@@ -23,6 +23,7 @@
     }],
     "extra": {
         "views": "src/Crud/views",
+        "carte-blanche-i18n": [ "i18n/crudbundle-i18n.csv" ],
         "carte-blanche-configs": [ "config/crud_config.ini", "config/int_tables.php" ],
         "branch-alias": {
             "dev-master": "0.1-dev"
