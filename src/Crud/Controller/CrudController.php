@@ -88,7 +88,7 @@ class CrudController
                     }
                 } else {
                     $this->getContainer()->get('session')
-                        ->setFlash("error:ERROR - An error occured while creating new '$_mod'!")
+                        ->setFlash("error:ERROR - An error occurred while creating new '$_mod'!")
                         ->commit();
                 }
             }
@@ -251,7 +251,7 @@ class CrudController
                 }
             } else {
                 $this->getContainer()->get('session')
-                    ->setFlash("error:ERROR - An error occured while deleting '$_mod' entry '$id'")
+                    ->setFlash("error:ERROR - An error occurred while deleting '$_mod' entry '$id'")
                     ->commit();
             }
         } else {
@@ -295,7 +295,7 @@ class CrudController
                         }
                     } else {
                         $this->getContainer()->get('session')
-                            ->setFlash("error:ERROR - An error occured while toggling field '$field' on model '$_mod' entry '$id'");
+                            ->setFlash("error:ERROR - An error occurred while toggling field '$field' on model '$_mod' entry '$id'");
                     }
                 }
                 $this->getContainer()->get('session')->commit();
@@ -310,7 +310,7 @@ class CrudController
                 }
             } else {
                 $this->getContainer()->get('session')
-                    ->setFlash("error:ERROR - An error occured while deleting '$_mod' entry '$id'")
+                    ->setFlash("error:ERROR - An error occurred while deleting '$_mod' entry '$id'")
                     ->commit();
             }
         } else {

@@ -386,7 +386,7 @@ class DataController
                     $file = $csv->getExportedFileName();
                     $this->getContainer()->get('response')->download( $file, 'application/csv' );
                 } else {
-                    $this->getContainer()->get('session')->setFlash("error:ERROR - An error occured while trying to build a CSV export file!");
+                    $this->getContainer()->get('session')->setFlash("error:ERROR - An error occurred while trying to build a CSV export file!");
                 }
             } else {
                 $this->getContainer()->get('session')->setFlash("error:ERROR - Not enough data to build a CSV export file!");
@@ -507,7 +507,7 @@ class DataController
                         $file
                     );
                 } else {
-                    $this->getContainer()->get('session')->setFlash("error:ERROR - An error occured while trying to build a ZIP archive!");
+                    $this->getContainer()->get('session')->setFlash("error:ERROR - An error occurred while trying to build a ZIP archive!");
                 }
             } else {
                 $this->getContainer()->get('session')->setFlash("error:ERROR - Not enough data to build a ZIP archive file!");
@@ -655,7 +655,7 @@ class DataController
                     if (!empty($absent_fields)) {
                         $err = $SQLITE->add_fields( $_table['table'], $absent_fields );
                         if (!$err)
-                            $this->getContainer()->get('session')->setFlash("error:ERROR - An error occured while creating fields '".join("', '", $absent_fields)."' in table '{$table['table']}'!");
+                            $this->getContainer()->get('session')->setFlash("error:ERROR - An error occurred while creating fields '".join("', '", $absent_fields)."' in table '{$table['table']}'!");
                         else
                             $this->getContainer()->get('session')->setFlash("ok:OK - Fields '".join("', '", $absent_fields)."' created in table '$table'");
                     }
