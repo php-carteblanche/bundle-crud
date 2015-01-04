@@ -1,0 +1,83 @@
+index;fr;en
+;Aucune entrée trouvée;No entry found
+;Nombre d'entrées : %nb%;Number of entries : %nb%
+;Voir seulement cette table;See only this table
+;Isoler cette table;Isolate this table
+;Créer une nouvelle entrée;Create a new entry
+;Ajouter une nouvelle %what%;Add a new %what%
+;Contenu pouvant utiliser la syntaxe Markdown;Content that can use Markdown syntax
+;Champs en relation avec %rel%;Field that is a relation with %rel%
+;Voir ce %what%;See this %what%
+;Voir ce fichier;See this file
+;voir le fichier;see file
+;Valeur binaire définie sur 1;Bit value setted on 1
+;Valeur binaire définie sur 0;Bit value setted on 0
+;Définir la valeur binaire %what% sur 1;Set bit value %what% on 1
+;Définir la valeur binaire %what% sur 0;Set bit value %what% on 0
+;activer;activate
+;désactiver;deactivate
+;supprimer;delete
+;éditer;edit
+;lire;read
+;Voir cette entrée;View this entry
+;Mettre à jour cette entrée;Update this entry
+;Supprimer cette entrée;Delete this entry
+;Etes-vous sûr de vouloir supprimer cette entrée ?;Are you sure you want to delete this entry?
+;Table <em>%name%</em>;Table <em>%name%</em>
+;Exporter en CSV;Export in CSV
+;Exporter toute la table au format CSV;Export the whole table entries in CSV format
+;Changer le sens de tri sur cette colonne;Change this column order way
+;Trier selon cette colonne;Sort by that column
+;Relation non trouvée %what%;Not found related %what%
+;Cocher tout/décocher tout;Check all/Uncheck all
+;Cocher/décocher tout;Check/unckeck all
+;Exporter les lignes sélectionnées en CSV;Export selected lines in CSV format
+;Pour la sélection :;For selection:
+;lister tout;list all
+;Voir la liste de toutes les entrées;See the list of all entries
+;Relatif %what% : ;Related %what% : 
+;Voir cette page;See this page
+;Voir cette page en nouvelle fenêtre;See this page in a new window
+;Contacter cette adresse email;Contact this email adress
+;Créé le %date%;Created on %date%
+;Dernière modification le %date%;Last updated on %date%
+;Voir cette entrée;See this entry
+;Migrer;Migrate
+;Mettre à jour la table;Update this table
+;Nombre de champs : %nb%;Number of fields : %nb%
+;Champs;Field
+;Type et longueur;Type and length
+;Nul;Null
+;Valeur par défaut;Default value
+;Index;Index
+;Relation;Relation
+;Structure des tables de la base de données;Tables structure of database
+;Table %name%;Table %name%
+;Aide sur la recherche avancée;Advanced search help
+;Création d'un nouveau %what%;Creation of a new %what%
+;Édition d'un %what%;Edition of %what%
+;OK – entrée %name% '%id%' désactivée pour le champs '%field%';OK - '%name%' entry '%id%' disabled for field '%field%'
+;OK – entrée %name% '%id%' activée pour le champs '%field%';OK - '%name%' entry '%id%' enabled for field '%field%'
+;ERREUR – Une erreur est survenue lors d'une modification du champs %field% sur l'entrée %id% du modèle %name%;ERROR - An error occured while toggling field '%field%' on model '%name%' entry '%id%'
+;ERREUR – Une erreur est survenue lors de la suppression de l'entrée %id% du modèle %name%;ERROR - An error occured while deleting '%name%' entry '%id%'
+;Aucun nom de modèle demandé ou structure non trouvée [%name%]!;No model name requested or structure not found [%name%]!
+;Aucun objet trouvé [%name%:%id%]!;No object found [%name%:%id%]!
+;OK – entrée %name% '%id%' mise à jour;OK - '%name%' entry '%id%' updated
+;OK – entrée %name% '%id%' supprimée;OK - '%name%' entry '%id%' deleted
+;OK – entrée %name% '%id%' créée;OK - '%name%' entry '%id%' created
+;ERREUR – Une erreur est survenue lors de la création d'une entrée du modèle %name%;ERROR - An error occured while creating a '%name%' entry
+;ERREUR – Une erreur est survenue lors de l'édition de l'entrée %id% du modèle %name%;ERROR - An error occured while updating '%name%' entry '%id%'
+;Les données contiennent des champs de type « blob » (<em>des fichiers</em>) qui ne peuvent pas être écrits dans un CSV !;The data contains blob informations (<em>file content</em>) that can not be written in a CSV file!
+;Cliquez-ici pour créer un export en ignorant ces fichiers;Clic here to make your export skipping these file contents
+;Cliquez-ici pour créer un export sous forme d'une archive ZIP contenant l'export CSV et les fichiers attachés;Clic here to make your export as a ZIP archive containing the CSV export data and the attached files
+;ERREUR – Une erreur est survenue en tentant de créer un fichier d'export CSV !;ERROR - An error occured while trying to build a CSV export file!
+;ERREUR – Pas assez d'argument pour créer le fichier d'export CSV !;ERROR - Not enough argument to build a CSV export file!
+;ERREUR – Pas assez de données pour créer le fichier d'export CSV !;ERROR - Not enough data to build a CSV export file!
+;ERREUR – Une erreur est survenue en tentant de créer une archive ZIP !;ERROR - An error occured while trying to build a ZIP archive!
+;ERREUR – Pas assez d'argument pour créer l'archive ZIP !;ERROR - Not enough data to build a ZIP archive file!
+;ERREUR – Pas assez de données pour créer l'archive ZIP !;ERROR - Not enough argument to build a ZIP archive file!
+;Lecture de %model% %id%;Reading %model% %id%
+;Aucun blob trouvé dans l'objet [%name%:%id%]!;No blob found in object [%name%:%id%]!
+;ERREUR - Votre système utilise une version de SQLite qui n'autorise pas la procédure 'alter' [version: %version%]!;ERROR - Your system is running a version of SQLite which does not allow \'alter\' procedure [version: %version%]!
+;"ERREUR - Une erreur est survenue en tentant de créer les champs ""%fields%"" dans la table table ""%table%""!";"ERROR - An error occured while creating fields ""%fields%"" in table ""%table%""!"
+;OK – Les champs %fields% ont bien été créés dans la table %table%;"OK - Fields ""%fields%"" created in table ""%table%"""
